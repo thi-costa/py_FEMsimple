@@ -488,7 +488,7 @@ class Frame:
 
 
 def read_frame(b_type,
-        path="./exemplo.xlsx"):
+        path="./frame/exemplo.xlsx"):
     # Variáveis de entrada para armazenar dados do problema
     nodes = {}
     elems = {}
