@@ -35,7 +35,7 @@ A = {key: 0.2*0.6 for (key, value) in elems.items()}
 
 # Exemplo 1
 
-beam_type = input("Você deseja a análise elástica de 'timo' ou 'euler'?")
+beam_type = input("Você deseja a análise elástica de 'timo' ou 'euler'?\n:")
 
 nodes, elems, gl_fixed, px_pred, qx_pred, py_pred, qy_pred, m_pred, I, E, A, v, beam_type = fr_tw.read_frame(b_type=beam_type)
 
@@ -113,12 +113,14 @@ def plot_results(node, comp, absolute=True):
 
     fig, ax = plt.subplots()
     ax.plot(u_vals, P_vals, linestyle="dotted", label="Timoshenko", color="red")
+    base = 24
 
     ax.ticklabel_format(useOffset=False, style='plain')
-    ax.set_ylabel("Q (kN)", fontdict=dict(weight='bold'))
-    ax.set_xlabel(string, fontdict=dict(weight='bold'))
+    ax.set_ylabel("Q (kN)", fontdict=dict(weight='bold', size=base))
+    ax.set_xlabel(string, fontdict=dict(weight='bold', size=base))
     ax.spines['right'].set_visible(False)
     ax.spines['top'].set_visible(False)
+    ax.tick_params(axis='both', which='major', labelsize=base*0.7)
     ax.yaxis.set_ticks_position('left')
     ax.xaxis.set_ticks_position('bottom')
 
@@ -142,12 +144,12 @@ def plot_results(node, comp, absolute=True):
         P_vals.append(int(i)/1000)
 
     ax.plot(u_vals, P_vals, label="Euler-Bernoulli",  color="black")
-    ax.legend()
+    ax.legend(fontsize=base*0.8)
     ax.set_ylim(0, max(P_vals))
     ax.set_xlim(min(u_vals), max(u_vals))
     fig.tight_layout()
     fig.savefig(f"./frame/figs/{string_}.jpg", dpi=200, bbox_inches="tight")
-    plt.show()
+    # plt.show()
     plt.close()
     
 
