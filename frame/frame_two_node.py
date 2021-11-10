@@ -167,7 +167,7 @@ class Frame:
         for i in [0, 1]:
             K = np.delete(K, remove_ind, axis=i)
 
-        writer = pd.ExcelWriter('m_matrix.xlsx', engine='xlsxwriter')
+        writer = pd.ExcelWriter('./frame/m_matrix.xlsx', engine='xlsxwriter')
 
         pd.DataFrame(K).to_excel(writer, sheet_name='k_simp', index=False)
 
@@ -361,7 +361,7 @@ class Frame:
 
         return N, M, Q
 
-    def results_view(self, path='results_2node.xlsx'):
+    def results_view(self, path='./frame/results_2node.xlsx'):
         '''
         Imprime relatório de resolução do problema
         '''
